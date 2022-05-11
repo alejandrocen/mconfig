@@ -15,6 +15,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'grpc-tools', '~> 1.45', require: false
   gem 'listen', '~> 3.3'
   gem 'rubocop', '~> 1.29', require: false
   gem 'rubocop-rails', '~> 2.14', require: false

@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package mconfig;
+
+message ConfigCreateRequest {
+    string key = 1;
+    string value = 2;
+    bool is_public = 3;
+}
+
+message ConfigCreateResponse {
+    string id = 1;
+    string key = 2;
+    string value = 3;
+    bool is_public = 4;
+}
+
+service Config {
+    rpc Create (ConfigCreateRequest) returns (ConfigCreateResponse);
+}
