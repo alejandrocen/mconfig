@@ -6,6 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.1.1'
 
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'gruf', '~> 2.14'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 6.1.6'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
