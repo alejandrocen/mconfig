@@ -15,6 +15,7 @@ module Mconfig
       self.service_name = 'mconfig.Config'
 
       rpc :Create, ::Mconfig::ConfigCreateRequest, ::Mconfig::ConfigCreateResponse
+      rpc :Index, ::Mconfig::ConfigIndexRequest, ::Mconfig::ConfigIndexResponse
     end
 
     Stub = Service.rpc_stub_class

@@ -2,6 +2,7 @@
 
 Gruf.configure do |config|
   config.server_binding_url = ENV.fetch('SERVER_BINDING_URL', 'localhost:50051')
+  config.default_client_host = ENV.fetch('DEFAULT_CLIENT_HOST', 'localhost:50051')
   config.interceptors.use(
     Gruf::Interceptors::Instrumentation::RequestLogging::Interceptor,
     formatter: :logstash

@@ -2,6 +2,15 @@ syntax = "proto3";
 
 package mconfig;
 
+message ConfigObject {
+    int32 id = 1;
+    string key = 2;
+    string value = 3;
+    bool is_public = 4;
+    string created_at = 5;
+    string updated_at = 6;
+}
+
 message ConfigCreateRequest {
     string key = 1;
     string value = 2;
@@ -9,12 +18,21 @@ message ConfigCreateRequest {
 }
 
 message ConfigCreateResponse {
-    string id = 1;
+    int32 id = 1;
     string key = 2;
     string value = 3;
     bool is_public = 4;
+    string created_at = 5;
+    string updated_at = 6;
+}
+
+message ConfigIndexRequest {}
+
+message ConfigIndexResponse {
+    repeated ConfigObject configs = 1;
 }
 
 service Config {
     rpc Create (ConfigCreateRequest) returns (ConfigCreateResponse);
+    rpc Index (ConfigIndexRequest) returns (ConfigIndexResponse);
 }

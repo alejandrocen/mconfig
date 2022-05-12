@@ -5,21 +5,39 @@ require 'google/protobuf'
 
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("mconfig.proto", :syntax => :proto3) do
+    add_message "mconfig.ConfigObject" do
+      optional :id, :int32, 1
+      optional :key, :string, 2
+      optional :value, :string, 3
+      optional :is_public, :bool, 4
+      optional :created_at, :string, 5
+      optional :updated_at, :string, 6
+    end
     add_message "mconfig.ConfigCreateRequest" do
       optional :key, :string, 1
       optional :value, :string, 2
       optional :is_public, :bool, 3
     end
     add_message "mconfig.ConfigCreateResponse" do
-      optional :id, :string, 1
+      optional :id, :int32, 1
       optional :key, :string, 2
       optional :value, :string, 3
       optional :is_public, :bool, 4
+      optional :created_at, :string, 5
+      optional :updated_at, :string, 6
+    end
+    add_message "mconfig.ConfigIndexRequest" do
+    end
+    add_message "mconfig.ConfigIndexResponse" do
+      repeated :configs, :message, 1, "mconfig.ConfigObject"
     end
   end
 end
 
 module Mconfig
+  ConfigObject = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mconfig.ConfigObject").msgclass
   ConfigCreateRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mconfig.ConfigCreateRequest").msgclass
   ConfigCreateResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mconfig.ConfigCreateResponse").msgclass
+  ConfigIndexRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mconfig.ConfigIndexRequest").msgclass
+  ConfigIndexResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mconfig.ConfigIndexResponse").msgclass
 end

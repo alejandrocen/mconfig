@@ -2,14 +2,9 @@
 
 class ConfigRpc < ApplicationRpc
   bind Mconfig::Config::Service
+  include Mconfig::Deps[repository: :config_repository]
 
-  def create
-    message = request.message
-    Mconfig::ConfigCreateResponse.new(
-      id: '1',
-      key: message.key,
-      value: message.value,
-      is_public: message.is_public
-    )
+  def index
+    Mconfig::ConfigIndexResponse.new(configs: repository.all.as_json)
   end
 end
